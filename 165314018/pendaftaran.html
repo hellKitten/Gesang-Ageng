@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+    <title>HELLO KITTY</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <body>
+
+        <!-- Navbar (sit on top) -->
+        <div class="w3-top">
+            <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                <a href="http://it-projects.usd.ac.id/~165314018/" class="w3-bar-item w3-button"><b>RS</b> Hello Kitty</a>
+                <!-- Float links to the right. Hide them on small screens -->
+                <div class="w3-right w3-hide-small">
+                    <a href="http://it-projects.usd.ac.id/~165314018/tambahPasien" class="w3-bar-item w3-button">Tambah Pasien</a>
+                    <a href="http://it-projects.usd.ac.id/~165314018/tambahKlinik" class="w3-bar-item w3-button">Tambah Klinik</a>
+                    <a href="http://it-projects.usd.ac.id/~165314018/cari" class="w3-bar-item w3-button">Cari Data</a>
+                </div>
+            </div>
+        </div>
+        <h2>Tambah Pasien</h2>
+        <form onsubmit="return make_json(this);" method="POST">
+            NIK
+            <input style="width: 100%" type="text" name="nik" value=""/>
+            <br/>
+            <br/>
+            Nama
+            <input style="width: 100%" type="text" name="nama" value=""/>
+            <br/>
+            <br/>
+            Alamat
+            <input style="width: 100%" type="text" name="alamat" value=""/>
+            <br/>
+            <br/>
+            Tanggal Lahir
+            <input style="width: 100%" type="date" name="tanggallahir" value=""/>
+            <br/>
+            <br/>
+            Kelamin
+            <input style="width: 100%" type="text" name="kelamin" value=""/>
+            <br/>
+            <br/>
+            <input type="submit" value="Tambah"/>
+        </form>
+        <pre id="output">
+        </pre>
+        <script>
+            function make_json(form) {
+                var json = {
+                    "noRM": form.nik.value,
+                    "nama": form.nama.value,
+                    "alamat": form.alamat.value,
+                    "nik": form.nik.value,
+                    "tanggalLahir": form.tanggallahir.value,
+                    "kelamin": form.kelamin.value
+
+                };
+                var html = JSON.stringify(json, 0, 100);
+                var Url = "http://202.94.83.190:8080/rsku/webresources/pasien/tambahPasienBaru";
+                var xhr = new XMLHttpRequest();
+                xhr.open('POST', Url, false);
+                xhr.setRequestHeader("Content-type", "application/json");
+                xhr.send(html);
+                document.getElementById("output").innerHTML = html;
+                return false;
+            }
+
+        </script>
+
+ 
+<footer class="w3-center w3-black w3-padding-16">
+    <p>Powered by Gesang Ageng Trisakti</p>
+</footer>
+</body>
+</html>

@@ -1,0 +1,62 @@
+<html>
+<head>
+<title>Kalkulator</title>
+<script>
+	function tampilkan(){
+		var tampil=document.getElementById("nama").value;
+		var slot=document.getElementById("slot");	
+	
+		slot.innerHTML=tampil;
+	}
+	function tambah(){
+	var a=document.getElementById("angka1").value;
+	var b=document.getElementById("angka2").value;	
+	var hasil = eval(a)+eval(b);
+	
+	document.getElementById("tampil").innerHTML= hasil;
+	}
+	function kurang(){
+	var angka1= document.getElementById("angka1").value;
+	var angka2= document.getElementById("angka2").value;
+	var kurang= angka1-angka2;	
+	
+	document.getElementById("tampil").innerHTML=kurang;
+	}
+	
+	function kali(){
+	var angka1= document.getElementById("angka1").value;
+	var angka2= document.getElementById("angka2").value;
+	var kali= angka1*angka2;	
+	
+	document.getElementById("tampil").innerHTML=kali;
+	}
+
+	function bagi(){
+	var angka1= document.getElementById("angka1").value;
+	var angka2= document.getElementById("angka2").value;
+	var bagi= angka1/angka2;	
+	
+	document.getElementById("tampil").innerHTML=bagi;
+	}
+
+</script>
+</head>
+<body>
+Nama :
+<input text="text" name="nama" id="nama">
+<input type="submit" value="Click" onclick="tampilkan()">
+<p id="slot">
+</p>
+<br>
+<input text="float" name="angka1" id="angka1">
+<input text="float" name="angka2" id="angka2">
+
+<input type="submit" value="+" id="tambah" onclick="tambah()">
+<input type="submit" value="-" id="kurang" onclick="kurang()">
+<input type="submit" value="*" id="kali" onclick="kali()">
+<input type="submit" value="/" id="bagi" onclick="bagi()">
+<br>
+
+<p id="tampil"></p>
+</body>
+</html>

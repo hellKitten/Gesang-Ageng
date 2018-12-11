@@ -1,0 +1,62 @@
+<!DOCTYPE html>
+<html>
+<title>HELLO KITTY</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+<body>
+
+<!-- Navbar (sit on top) -->
+<div class="w3-top">
+  <div class="w3-bar w3-white w3-wide w3-padding w3-card">
+    <a href="http://it-projects.usd.ac.id/~165314018/" class="w3-bar-item w3-button"><b>RS</b> Hello Kitty</a>
+    <!-- Float links to the right. Hide them on small screens -->
+    <div class="w3-right w3-hide-small">
+      <a href="http://it-projects.usd.ac.id/~165314018/login" class="w3-bar-item w3-button">Login</a>
+        <a href="http://it-projects.usd.ac.id/~165314018/halamanutama" class="w3-bar-item w3-button">Halaman Utama</a>
+        <a href="http://it-projects.usd.ac.id/~165314018/tambahPasien" class="w3-bar-item w3-button">Tambah Pasien</a>
+        <a href="http://it-projects.usd.ac.id/~165314018/tambahKlinik" class="w3-bar-item w3-button">Tambah Klinik</a>
+        <a href="http://it-projects.usd.ac.id/~165314018/cari" class="w3-bar-item w3-button">Cari Data</a>
+    </div>
+  </div>
+</div>
+ <h1>Cari Pasien</h1>
+                                <div class="contact-form">
+                                    <table>
+                                        <tr><td>No Rekam Medis</td> <td>:</td> <td><input type="text" id="nrm"/> <button type="button" onclick="loadDoc()" id="btn">Cari</button></td></tr>
+                                    </table>
+
+                                    <br/><br/><br/><h2><strong>Hasil Pencarian</strong></h2><br/>
+                                    <table>
+                                        <tr><td>Nama</td> <td>:</td> <td><input type="text" id="nama" value=""/></td></tr>
+                                        <tr><td>NIK</td> <td>:</td> <td><input type="text" id="nik" value=""/></td></tr>
+                                        <tr><td>Alamat</td> <td>:</td> <td><input type="text" id="alamat" value=""/></td></tr>
+                                        <tr><td>Tanggal Lahir</td> <td>:</td> <td><input type="text" id="tanggalLahir" value=""/></td></tr>
+                                        <tr><td>Kelamin</td> <td>:</td><td><input type="text" id="kelamin" value=""/></td></tr>
+
+                                    </table><script>
+ function loadDoc() {
+
+                                            var url = "http://202.94.83.190:8080/165314018/webresources/pasien/cariPasien?noRm=" + nrm.value;
+                                            var xhttp = new XMLHttpRequest();
+                                            xhttp.open("GET", url, true);
+                                            xhttp.send();
+                                            xhttp.onreadystatechange = function () {
+                                                if (this.readyState == 4 && this.status == 200) {
+                                                    var objj = JSON.parse(this.responseText);
+                                                    document.getElementById("nama").value = objj.nama;
+                                                    document.getElementById("nik").value = objj.nik;
+                                                    document.getElementById("alamat").value = objj.alamat;
+                                                    document.getElementById("tanggalLahir").value = objj.tanggalLahir;
+                                                    document.getElementById("kelamin").value = objj.kelamin;
+                                                }
+                                            };
+                                        }</script>
+<!-- End page content -->
+</div>
+<!-- Footer -->
+<footer class="w3-center w3-black w3-padding-16">
+  <p>Powered by Gesang Ageng Trisakti</a></p>
+</footer>
+</body>
+</html>
